@@ -5,15 +5,6 @@ export interface IAllItems {
   plus: boolean;
 }
 
-export interface IContext {
-  allItems: IAllItems[];
-  searchValue: string;
-  cartItems: ICartItems[];
-  setSearchValue: (value: string) => void;
-  addToCartBtn: (id: number, product: ICartItems) => void;
-  removeFromCart: (id: number) => void;
-}
-
 export interface ICard {
   id: number;
   title: string;
@@ -26,4 +17,15 @@ export interface ICartItems {
   id: number;
   title: string;
   price: number;
+}
+
+export interface ICart {
+  setOpen: () => void;
+}
+
+export interface ICartItem {
+  id: number;
+  title: string;
+  price: number;
+  removeItem: (id: number) => void;
 }

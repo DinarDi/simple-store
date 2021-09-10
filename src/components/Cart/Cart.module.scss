@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cart {
+  position: absolute;
+  width: 385px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.cartItems {
+  flex: 1;
+  overflow: auto;
+}
+
+.totalBlock {
+  div {
+    flex: 1;
+    border-bottom: 1px dashed #dfdfdf;
+    margin: 0 10px;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      display: flex;
+    }
+  }
+
+  button {
+    width: 100%;
+    border: none;
+    background-color: #9dd558;
+    border-radius: 18px;
+    padding: 18px 0;
+    color: #ffffff;
+  }
+}

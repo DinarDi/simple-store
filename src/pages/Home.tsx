@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import Card from "../components/Card";
-import { Context } from "../context";
+import Card from "../components/Card/Card";
+import { Context } from "../context/context";
 
 import searchIcon from "../img/searchIcon.svg";
 

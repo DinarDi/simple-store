@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import Routes from "./components/Routes";
-import Header from "./components/Header";
-import { Context } from "./context";
+import Header from "./components/Header/Header";
+import { Context } from "./context/context";
 import { IAllItems, ICartItems } from "./types";
 
 const App = () => {
@@ -40,7 +40,6 @@ const App = () => {
   ]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [cartItems, setCartItems] = useState<ICartItems[]>([]);
-  console.log(cartItems);
 
   const addToCartBtn = (id: number, product: ICartItems) => {
     setAllItems(

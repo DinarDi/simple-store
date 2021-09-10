@@ -1,24 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import { createPortal } from "react-dom";
-import { Context } from "../context";
+import { Context } from "../../context/context";
 import CartItem from "./CartItem";
 
-interface ICart {
-  setOpen: () => void;
-}
+import styles from "./Cart.module.scss";
+import { ICart } from "../../types";
 
 const Cart: React.FC<ICart> = ({ setOpen }) => {
   const { cartItems, removeFromCart } = useContext(Context);
-  const modal = document.createElement("div");
-  useEffect(() => {
-    document.body.appendChild(modal);
-    return () => {
-      document.body.removeChild(modal);
-    };
-  }, []);
-  return createPortal(
-    <div className="overlay">
-      <div className="cart p-30 d-flex flex-column">
+  const total = cartItems.reduce((sum, item) => item.price + sum, 0);
+
+  return (
+    <div className={styles.overlay}>
+      <div className={`${styles.cart} p-30 d-flex flex-column`}>
         <div className="d-flex justify-between">
           <h2 className="mb-30">Корзина</h2>
           <p className="cu-p" onClick={() => setOpen()}>
@@ -26,7 +19,7 @@ const Cart: React.FC<ICart> = ({ setOpen }) => {
           </p>
         </div>
 
-        <div className="cartItems">
+        <div className={styles.cartItems}>
           {cartItems.map((item) => (
             <CartItem
               key={item.id}
@@ -37,24 +30,23 @@ const Cart: React.FC<ICart> = ({ setOpen }) => {
             />
           ))}
         </div>
-        <div className="totalBlock">
-          <ul className="mb-24">
+        <div className={styles.totalBlock}>
+          <ul className="mb-20">
             <li>
               <span>Итого: </span>
               <div></div>
-              <b>21 498 руб. </b>
+              <b>{total} руб. </b>
             </li>
             <li>
               <span>Налог 5%: </span>
               <div></div>
-              <b>1074 руб. </b>
+              <b>{(total * 5) / 100} руб. </b>
             </li>
           </ul>
           <button>Оформить заказ</button>
         </div>
       </div>
-    </div>,
-    modal
+    </div>
   );
 };
 

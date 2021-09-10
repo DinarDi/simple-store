@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { IContext } from "./types";
+import { IContext } from "./contextTypes";
 
 const defaultValue: IContext = {
   allItems: [],

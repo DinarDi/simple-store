@@ -1,0 +1,11 @@
+.card {
+  max-width: 210px;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 40px;
+
+  h5,
+  p {
+    margin: 0;
+  }
+}
