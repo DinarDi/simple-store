@@ -4,10 +4,28 @@ import CartItem from "./CartItem";
 
 import styles from "./Cart.module.scss";
 import { ICart } from "../../types";
+import axios from "axios";
 
 const Cart: React.FC<ICart> = ({ setOpen }) => {
-  const { cartItems, removeFromCart } = useContext(Context);
+  const { cartItems, removeFromCart, setCartItems } = useContext(Context);
   const total = cartItems.reduce((sum, item) => item.price + sum, 0);
+
+  const sendOrder = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      await axios.post("http://localhost:3000/orders", {
+        items: cartItems,
+      });
+      setCartItems([]);
+
+      for (let i = 0; i < cartItems.length; i++) {
+        const element = cartItems[i];
+        await axios.delete(`http://localhost:3000/cartItems/${element.id}`);
+      }
+    } catch (error) {
+      alert("Something went wrong. Try again.");
+      console.log(error);
+    }
+  };
 
   return (
     <div className={styles.overlay}>
@@ -43,7 +61,9 @@ const Cart: React.FC<ICart> = ({ setOpen }) => {
               <b>{(total * 5) / 100} руб. </b>
             </li>
           </ul>
-          <button>Оформить заказ</button>
+          <button className="cu-p" onClick={sendOrder}>
+            Оформить заказ
+          </button>
         </div>
       </div>
     </div>

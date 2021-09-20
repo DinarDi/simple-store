@@ -1,12 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Card from "../components/Card/Card";
 import { Context } from "../context/context";
 
 import searchIcon from "../img/searchIcon.svg";
 
 const Home: React.FC = () => {
-  const { allItems, searchValue, setSearchValue, addToCartBtn } =
-    useContext(Context);
+  const {
+    allItems,
+    searchValue,
+    setSearchValue,
+    addToCartBtn,
+    itemAddedToCart,
+    addToFavorite,
+    itemAddedToFavorite,
+  } = useContext(Context);
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between">
@@ -37,8 +44,10 @@ const Home: React.FC = () => {
               id={item.id}
               title={item.title}
               price={item.price}
-              plus={item.plus}
               addToCart={addToCartBtn}
+              itemAddedToCart={itemAddedToCart}
+              addToFavorite={addToFavorite}
+              itemAddedToFavorite={itemAddedToFavorite}
             />
           ))}
       </div>

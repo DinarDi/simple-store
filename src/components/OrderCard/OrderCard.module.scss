@@ -1,5 +1,4 @@
 .card {
-  max-width: 210px;
   border: 2px solid #f3f3f3;
   box-sizing: border-box;
   border-radius: 40px;
@@ -8,9 +7,4 @@
   p {
     margin: 0;
   }
-}
-
-.favorite {
-  position: absolute;
-  cursor: pointer;
 }

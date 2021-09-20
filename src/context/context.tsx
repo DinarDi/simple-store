@@ -5,9 +5,14 @@ const defaultValue: IContext = {
   allItems: [],
   searchValue: "",
   cartItems: [],
+  favoriteItems: [],
   setSearchValue: () => {},
   addToCartBtn: () => {},
   removeFromCart: () => {},
+  itemAddedToCart: () => false,
+  itemAddedToFavorite: () => false,
+  addToFavorite: () => {},
+  setCartItems: () => {},
 };
 
 export const Context = createContext<IContext>(defaultValue);
