@@ -44,6 +44,7 @@ const Home: React.FC = () => {
               id={item.id}
               title={item.title}
               price={item.price}
+              imgUrl={item.imgUrl}
               addToCart={addToCartBtn}
               itemAddedToCart={itemAddedToCart}
               addToFavorite={addToFavorite}

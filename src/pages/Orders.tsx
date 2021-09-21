@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/Button/Button";
 import OrderCard from "../components/OrderCard/OrderCard";
 import { IOrders } from "../types";
 
-const Orders = () => {
+const Orders: React.FC = () => {
   const [orders, setOrders] = useState<IOrders[]>([]);
+
   useEffect(() => {
     async function fetchOrders() {
       const ordersResponse = await axios.get<IOrders[]>(
@@ -18,9 +21,17 @@ const Orders = () => {
     <div className="content p-40">
       <h1 className="mb-30">Мои заказы</h1>
       <div className="d-flex flex-wrap">
-        {orders.map((order) => (
-          <OrderCard order={order} />
-        ))}
+        {orders.length ? (
+          orders.map((order) => <OrderCard key={order.id} order={order} />)
+        ) : (
+          <div className="noItems d-flex flex-column align-center">
+            <h3 className="mb-10">Заказов нет</h3>
+            <p>Вы ничего не заказывали</p>
+            <Link to="/">
+              <Button>Вернуться назад</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

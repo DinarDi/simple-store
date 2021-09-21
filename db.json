@@ -3,27 +3,74 @@
     {
       "id": 1,
       "title": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "price": 12999
+      "price": 12999,
+      "imgUrl": "productImg/01.jpg"
     },
     {
       "id": 2,
       "title": "Мужские Кроссовки Nike Air Max 270",
-      "price": 14000
+      "price": 12999,
+      "imgUrl": "productImg/02.jpg"
     },
     {
       "id": 3,
-      "title": "Мужские Кроссовки Under Armour Curry 8",
-      "price": 15000
+      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 8499,
+      "imgUrl": "productImg/03.jpg"
     },
     {
       "id": 4,
       "title": "Кроссовки Puma X Aka Boku Future Rider",
-      "price": 8999
+      "price": 8999,
+      "imgUrl": "productImg/04.jpg"
     },
     {
       "id": 5,
+      "title": "Мужские Кроссовки Under Armour Curry 8",
+      "price": 15199,
+      "imgUrl": "productImg/05.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Мужские Кроссовки Nike Kyrie 7",
+      "price": 11299,
+      "imgUrl": "productImg/06.jpg"
+    },
+    {
+      "id": 7,
       "title": "Мужские Кроссовки Jordan Air Jordan 11",
-      "price": 17000
+      "price": 10799,
+      "imgUrl": "productImg/07.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Мужские Кроссовки Nike LeBron XVIII",
+      "price": 16499,
+      "imgUrl": "productImg/08.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Мужские Кроссовки Nike Lebron XVIII Low",
+      "price": 13999,
+      "imgUrl": "productImg/09.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 8499,
+      "imgUrl": "productImg/10.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Кроссовки Puma X Aka Boku Future Rider",
+      "price": 8999,
+      "imgUrl": "productImg/11.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Мужские Кроссовки Nike Kyrie Flytrap IV",
+      "price": 11299,
+      "imgUrl": "productImg/12.jpg"
     }
   ],
   "cartItems": [],
@@ -34,10 +81,26 @@
         {
           "id": 2,
           "title": "Мужские Кроссовки Nike Air Max 270",
-          "price": 14000
+          "price": 12999,
+          "imgUrl": "productImg/02.jpg"
         }
       ],
       "id": 1
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "title": "Мужские Кроссовки Nike Air Max 270",
+          "price": 12999,
+          "imgUrl": "productImg/02.jpg"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "items": [],
+      "id": 3
     }
   ]
 }

@@ -1,6 +1,5 @@
 import React from "react";
 
-import img1 from "../../img/img1.png";
 import plusOff from "../../img/plusOff.svg";
 import plusOn from "../../img/plusOn.svg";
 import favoriteOn from "../../img/favoriteOn.svg";
@@ -13,6 +12,7 @@ const Card: React.FC<ICard> = ({
   id,
   title,
   price,
+  imgUrl,
   addToCart,
   itemAddedToCart,
   addToFavorite,
@@ -26,13 +26,13 @@ const Card: React.FC<ICard> = ({
           height={32}
           src={itemAddedToFavorite(id) ? favoriteOn : favoriteOff}
           alt="Favorite"
-          onClick={() => addToFavorite({ id, title, price })}
+          onClick={() => addToFavorite({ id, title, price, imgUrl })}
         />
       </div>
       <img
         width={112}
         height={112}
-        src={img1}
+        src={imgUrl}
         alt="Sneakers"
         className="mb-15"
       />
@@ -47,7 +47,7 @@ const Card: React.FC<ICard> = ({
           height={32}
           src={itemAddedToCart(id) ? plusOn : plusOff}
           alt="plus"
-          onClick={() => addToCart({ id, title, price })}
+          onClick={() => addToCart({ id, title, price, imgUrl })}
         />
       </div>
     </div>

@@ -3,14 +3,16 @@ import React, { useEffect, useState } from "react";
 import Routes from "./components/Routes";
 import Header from "./components/Header/Header";
 import { Context } from "./context/context";
-import { IAllItems, ICartItems, IOrders } from "./types";
+import { IAllItems, ICartItems } from "./types";
 import axios from "axios";
 
 const App: React.FC = () => {
   const [allItems, setAllItems] = useState<IAllItems[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
-  const [cartItems, setCartItems] = useState<ICartItems[]>([]);
+  const [cartItems, setCartItems] = useState<IAllItems[]>([]);
   const [favoriteItems, setFavoriteItems] = useState<IAllItems[]>([]);
+
+  // Cart, loading, disabled button
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +37,7 @@ const App: React.FC = () => {
     fetchData();
   }, []);
 
-  const addToCartBtn = async (product: ICartItems) => {
+  const addToCartBtn = async (product: IAllItems) => {
     try {
       if (cartItems.find((item) => item.id === product.id)) {
         setCartItems(cartItems.filter((item) => item.id !== product.id));

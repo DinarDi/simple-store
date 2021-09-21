@@ -12,9 +12,9 @@ const OrderCard: React.FC<IOrderCard> = ({ order }) => {
   return (
     <div className={`${styles.card} p-40 mr-40 mb-40`}>
       <h5 className="mb-20">Заказ №{order.id}</h5>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap justify-around">
         {order.items.map((item) => (
-          <OrderItemCard item={item} />
+          <OrderItemCard key={item.id} item={item} />
         ))}
       </div>
     </div>

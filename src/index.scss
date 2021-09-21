@@ -46,3 +46,27 @@ header {
 }
 
 // HOME END
+
+// FAVORITES START
+
+.noItems {
+  max-width: 290px;
+  margin: 0 auto;
+  h3,
+  p {
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 70px;
+  }
+  a {
+    width: 100%;
+  }
+}
+
+.closeBtnImg {
+  margin: 0;
+}
+
+// FAVORITES END

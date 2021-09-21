@@ -2,15 +2,17 @@ export interface IAllItems {
   id: number;
   title: string;
   price: number;
+  imgUrl: string;
 }
 
 export interface ICard {
   id: number;
   title: string;
   price: number;
-  addToCart: (product: ICartItems) => void;
+  imgUrl: string;
+  addToCart: (product: IAllItems) => void;
   itemAddedToCart: (id: number) => boolean;
-  addToFavorite: (product: ICartItems) => void;
+  addToFavorite: (product: IAllItems) => void;
   itemAddedToFavorite: (id: number) => boolean;
 }
 
@@ -28,6 +30,7 @@ export interface ICartItem {
   id: number;
   title: string;
   price: number;
+  imgUrl: string;
   removeItem: (id: number) => void;
 }
 
