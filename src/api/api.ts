@@ -2,7 +2,7 @@ import axios from "axios";
 import { IAllItems, IOrders } from "../types";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://store-simple.herokuapp.com/",
 });
 
 export const fetchAPI = {
