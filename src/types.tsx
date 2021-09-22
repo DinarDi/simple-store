@@ -16,12 +16,6 @@ export interface ICard {
   itemAddedToFavorite: (id: number) => boolean;
 }
 
-export interface ICartItems {
-  id: number;
-  title: string;
-  price: number;
-}
-
 export interface ICart {
   setOpen: () => void;
 }

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Routes from "./components/Routes";
 import Header from "./components/Header/Header";
 import { Context } from "./context/context";
-import { IAllItems, ICartItems } from "./types";
-import axios from "axios";
+import { IAllItems } from "./types";
+import { addAPI, fetchAPI, removeAPI } from "./api/api";
 
 const App: React.FC = () => {
   const [allItems, setAllItems] = useState<IAllItems[]>([]);
@@ -12,20 +12,13 @@ const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<IAllItems[]>([]);
   const [favoriteItems, setFavoriteItems] = useState<IAllItems[]>([]);
 
-  // Cart, loading, disabled button
-
   useEffect(() => {
     async function fetchData() {
       try {
-        const cartItemsResponse = await axios.get<IAllItems[]>(
-          "http://localhost:3000/cartItems"
-        );
-        const favoriteItemsResponse = await axios.get<IAllItems[]>(
-          "http://localhost:3000/favoriteItems"
-        );
-        const allItemsResponse = await axios.get<IAllItems[]>(
-          "http://localhost:3000/allItems"
-        );
+        const cartItemsResponse = await fetchAPI.getCartItems();
+        const favoriteItemsResponse = await fetchAPI.getFavoriteItems();
+        const allItemsResponse = await fetchAPI.getAllItems();
+
         setCartItems(cartItemsResponse.data);
         setFavoriteItems(favoriteItemsResponse.data);
         setAllItems(allItemsResponse.data);
@@ -41,10 +34,10 @@ const App: React.FC = () => {
     try {
       if (cartItems.find((item) => item.id === product.id)) {
         setCartItems(cartItems.filter((item) => item.id !== product.id));
-        await axios.delete(`http://localhost:3000/cartItems/${product.id}`);
+        await removeAPI.removeCartItem(product.id);
       } else {
         setCartItems([...cartItems, product]);
-        await axios.post("http://localhost:3000/cartItems", product);
+        await addAPI.addCartItems(product);
       }
     } catch (e) {
       alert("Something went wrong.");
@@ -55,7 +48,7 @@ const App: React.FC = () => {
   const removeFromCart = async (id: number) => {
     try {
       setCartItems(cartItems.filter((item) => item.id !== id));
-      axios.delete(`http://localhost:3000/cartItems/${id}`);
+      await removeAPI.removeCartItem(id);
     } catch (e) {
       alert("Something went wrong. Try again.");
       console.log(e);
@@ -68,10 +61,10 @@ const App: React.FC = () => {
         setFavoriteItems(
           favoriteItems.filter((item) => item.id !== product.id)
         );
-        await axios.delete(`http://localhost:3000/favoriteItems/${product.id}`);
+        await removeAPI.removeFavoriteItem(product.id);
       } else {
         setFavoriteItems([...favoriteItems, product]);
-        await axios.post("http://localhost:3000/favoriteItems", product);
+        await addAPI.addFavoriteItems(product);
       }
     } catch (e) {
       alert("Something went wrong.");

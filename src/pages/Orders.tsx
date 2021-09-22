@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchAPI } from "../api/api";
 import Button from "../components/Button/Button";
 import OrderCard from "../components/OrderCard/OrderCard";
 import { IOrders } from "../types";
@@ -10,9 +10,7 @@ const Orders: React.FC = () => {
 
   useEffect(() => {
     async function fetchOrders() {
-      const ordersResponse = await axios.get<IOrders[]>(
-        "http://localhost:3000/orders"
-      );
+      const ordersResponse = await fetchAPI.getOrders();
       setOrders(ordersResponse.data);
     }
     fetchOrders();

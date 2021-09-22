@@ -6,7 +6,7 @@ import styles from "./Cart.module.scss";
 import empty from "../../img/cartEmpty.jpg";
 import closeBtn from "../../img/removeBtn.svg";
 import { ICart } from "../../types";
-import axios from "axios";
+import { addAPI, removeAPI } from "../../api/api";
 
 const Cart: React.FC<ICart> = ({ setOpen }) => {
   const { cartItems, removeFromCart, setCartItems } = useContext(Context);
@@ -14,14 +14,12 @@ const Cart: React.FC<ICart> = ({ setOpen }) => {
 
   const sendOrder = async (e: React.MouseEvent<HTMLButtonElement>) => {
     try {
-      await axios.post("http://localhost:3000/orders", {
-        items: cartItems,
-      });
+      await addAPI.addOrder(cartItems);
       setCartItems([]);
 
       for (let i = 0; i < cartItems.length; i++) {
         const element = cartItems[i];
-        await axios.delete(`http://localhost:3000/cartItems/${element.id}`);
+        await removeAPI.removeCartItem(element.id);
       }
     } catch (error) {
       alert("Something went wrong. Try again.");
