@@ -8,7 +8,7 @@ import closeBtn from "../../img/removeBtn.svg";
 import { ICart } from "../../types";
 import { addAPI, removeAPI } from "../../api/api";
 
-const Cart: React.FC<ICart> = ({ setOpen }) => {
+const Cart: React.FC<ICart> = ({ setOpen, opened }) => {
   const { cartItems, removeFromCart, setCartItems } = useContext(Context);
   const total = cartItems.reduce((sum, item) => item.price + sum, 0);
 
@@ -28,7 +28,7 @@ const Cart: React.FC<ICart> = ({ setOpen }) => {
   };
 
   return (
-    <div className={styles.overlay}>
+    <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ""}`}>
       <div className={`${styles.cart} p-30 d-flex flex-column`}>
         <div className="d-flex justify-between align-center mb-25">
           <h2>Корзина</h2>

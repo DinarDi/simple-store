@@ -11,14 +11,17 @@ const App: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [cartItems, setCartItems] = useState<IAllItems[]>([]);
   const [favoriteItems, setFavoriteItems] = useState<IAllItems[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setIsLoading(true);
         const cartItemsResponse = await fetchAPI.getCartItems();
         const favoriteItemsResponse = await fetchAPI.getFavoriteItems();
         const allItemsResponse = await fetchAPI.getAllItems();
 
+        setIsLoading(false);
         setCartItems(cartItemsResponse.data);
         setFavoriteItems(favoriteItemsResponse.data);
         setAllItems(allItemsResponse.data);
@@ -87,6 +90,7 @@ const App: React.FC = () => {
         searchValue,
         cartItems,
         favoriteItems,
+        isLoading,
         setSearchValue,
         addToCartBtn,
         removeFromCart,

@@ -17,6 +17,7 @@ export interface ICard {
 }
 
 export interface ICart {
+  opened: boolean;
   setOpen: () => void;
 }
 

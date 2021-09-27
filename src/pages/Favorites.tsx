@@ -11,6 +11,7 @@ const Favorites: React.FC = () => {
     itemAddedToCart,
     addToFavorite,
     itemAddedToFavorite,
+    isLoading,
   } = useContext(Context);
   return (
     <div className="content p-40">

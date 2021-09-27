@@ -31,7 +31,7 @@ const Header: React.FC = () => {
           <img width={18} height={18} src={cart} alt="Cart" />
           <span>{total} руб.</span>
         </li>
-        {cartOpen && <Cart setOpen={() => setCartOpen(!cartOpen)} />}
+        <Cart setOpen={() => setCartOpen(!cartOpen)} opened={cartOpen} />
         <li className="mr-30">
           <Link to="/favorites">
             <img width={21} height={18} src={favorites} alt="Favorites" />

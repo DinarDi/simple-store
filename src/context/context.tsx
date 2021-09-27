@@ -6,6 +6,7 @@ const defaultValue: IContext = {
   searchValue: "",
   cartItems: [],
   favoriteItems: [],
+  isLoading: false,
   setSearchValue: () => {},
   addToCartBtn: () => {},
   removeFromCart: () => {},

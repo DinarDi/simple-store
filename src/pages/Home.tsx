@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Card from "../components/Card/Card";
+import Loader from "../components/Loader/Loader";
 import { Context } from "../context/context";
 
 import searchIcon from "../img/searchIcon.svg";
@@ -8,12 +9,14 @@ const Home: React.FC = () => {
   const {
     allItems,
     searchValue,
+    isLoading,
     setSearchValue,
     addToCartBtn,
     itemAddedToCart,
     addToFavorite,
     itemAddedToFavorite,
   } = useContext(Context);
+
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between">
@@ -33,24 +36,26 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-wrap">
-        {allItems
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLowerCase())
-          )
-          .map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              imgUrl={item.imgUrl}
-              addToCart={addToCartBtn}
-              itemAddedToCart={itemAddedToCart}
-              addToFavorite={addToFavorite}
-              itemAddedToFavorite={itemAddedToFavorite}
-            />
-          ))}
+      <div className="d-flex flex-wrap justify-around">
+        {isLoading
+          ? [...Array(12)].map((item) => <Loader />)
+          : allItems
+              .filter((item) =>
+                item.title.toLowerCase().includes(searchValue.toLowerCase())
+              )
+              .map((item, index) => (
+                <Card
+                  key={index}
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  imgUrl={item.imgUrl}
+                  addToCart={addToCartBtn}
+                  itemAddedToCart={itemAddedToCart}
+                  addToFavorite={addToFavorite}
+                  itemAddedToFavorite={itemAddedToFavorite}
+                />
+              ))}
       </div>
     </div>
   );

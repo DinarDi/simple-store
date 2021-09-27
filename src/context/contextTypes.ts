@@ -5,6 +5,7 @@ export interface IContext {
   searchValue: string;
   cartItems: IAllItems[];
   favoriteItems: IAllItems[];
+  isLoading: boolean;
   setSearchValue: (value: string) => void;
   addToCartBtn: (product: IAllItems) => void;
   removeFromCart: (id: number) => void;
